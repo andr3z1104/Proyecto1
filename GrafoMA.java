@@ -26,12 +26,10 @@ public class GrafoMA implements iGrafo{
     
         
     
-//    @Override
-//    public int existArista(int i, int j) {
-//        if (i >= numVertices || j >= numVertices) {
-//            return 0; }
-//        return matrixAdy[i][j];
-//    }
+    @Override
+    public boolean existArista(int i, int j) {
+        return matrixAdy[i][j] != 0;
+    }
     
     
     @Override
