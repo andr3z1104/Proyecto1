@@ -8,7 +8,7 @@ package grafoma;
 public interface iGrafo {
     
     public boolean isEmpty(GrafoMA g);
-//    public int existArista(int i, int j);
+    public boolean existArista(int i, int j);
     
     public void insertVertice(int n);
     public void deleteVertice(int v);
