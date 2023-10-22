@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+
+
 /**
  *
  * @author andre
  */
 public class GRAFO {
     
-//    private int numVertices;
+    private boolean[] visitado;
     private int [][] matrixAdy;
 
     public GRAFO(int n) {
-//        this.numVertices = n;
         matrixAdy = new int [n][n];
     }
 
@@ -25,14 +26,10 @@ public class GRAFO {
         this.matrixAdy = matrixAdy;
     }
     
-//    public int getNumvertices(){
-//        return numVertices;
-//    }
-//    
-//    public void setNumvertices(int numVertices){
-//        this.numVertices = numVertices;
-//    }
-    
+    public boolean[] getVisitado(){
+        return visitado;
+    }
+
     
     public boolean isEmpty(){
         return getMatrixAdy().length == 0;
@@ -63,8 +60,6 @@ public class GRAFO {
                 for (int y = 0; y < getMatrixAdy().length; y++)
                         newMatriz [x] [y] = matrixAdy [x] [y];
                 }
-           
-//           numVertices += n;
            setMatrixAdy(newMatriz);
      }
     
@@ -91,33 +86,73 @@ public class GRAFO {
                     }
             }
             setMatrixAdy(deleteMatriz);
-//            numVertices--;
         }
         
         
     }
     
-    public void DFS(int v) {
-        boolean[] visitado = new boolean[getMatrixAdy().length];
-        Stack pila = new Stack();
-
-        pila.push(v);
-
-        while (!pila.isEmpty()) {
-            int vertice = pila.pop();
-
-            if (!visitado[vertice]) {
-                visitado[vertice] = true;
-                System.out.print(vertice + " ");
-
-                for (int i = 0; i < getMatrixAdy().length; i++) {
-                    if (matrixAdy[vertice][i] != 0 && !visitado[i]) {
-                        pila.push(i);
-                    }
-                }
-            }
-        }
-    } 
+    
+    public void kosaraju(){
+        Kosaraju k = new Kosaraju();
+        k.stronglyConnected(this);
+    }
+    
+    
+//    
+//    public void dfs(int v){
+//        visitado[v] = true;
+//        System.out.println(v +" ");
+//        for (int i = 0; i < getMatrixAdy().length; i++) {
+//            if (getMatrixAdy()[v][i] == 1 && !visitado[v]) {
+//                dfs(v);
+//            }
+//        }
+//    }
+//    
+//    public void stronglyCon(){
+//        visitado = new boolean[getMatrixAdy().length];
+//        StackKosa pila = new StackKosa();
+//        
+//        for(int v=0; v< getMatrixAdy().length; v++){
+//            if(!visitado[v]){
+//                findOrder(v,pila);
+//            }
+//        }
+//        
+//        invertir();
+//        
+//        visitado = new boolean[getMatrixAdy().length];
+//        while(!pila.isEmpty()){
+//            int vertex = pila.pop().getElement();
+//            if(!visitado[vertex]){
+//                dfs(vertex);
+//                System.out.println("");
+//            }
+//        }
+//    }
+//    
+//    public void findOrder(int v, StackKosa pila){
+//        visitado[v] = true;
+//        
+//        for (int i = 0; i < getMatrixAdy().length; i++) {
+//            if(getMatrixAdy()[v][i] == 1 && !visitado[v]){
+//                findOrder(v, pila);
+//            }
+//        }
+//        pila.push(v);
+//    }
+//    
+//    public void invertir(){
+//        for (int i = 0; i < getMatrixAdy().length; i++) {
+//            for (int j = 0; j < getMatrixAdy().length; j++) {
+//                if(getMatrixAdy()[i][j] == 1){
+//                    getMatrixAdy()[i][j] = 0;
+//                    getMatrixAdy()[i][j] = 1;
+//                }
+//            }
+//        }
+//    }
+    
     
     public void print(){
         System.out.println("Vertices: " + getMatrixAdy().length );

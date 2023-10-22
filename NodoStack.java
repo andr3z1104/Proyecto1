@@ -7,32 +7,30 @@
  *
  * @author andre
  */
-public class Nodo {
+public class NodoStack {
     
-    private Object element;
-    private Nodo next;
+    private int element;
+    private NodoStack next;
     
-    public Nodo(Object element){
+    public NodoStack(int element){
         this.element = element;
         this.next = null;
     }
 
-    public Object getElement() {
+    public int getElement() {
         return element;
     }
 
-    public void setElement(Object element) {
+    public void setElement(int element) {
         this.element = element;
     }
 
-    public Nodo getNext() {
+    public NodoStack getNext() {
         return next;
     }
 
-    public void setNext(Nodo next) {
+    public void setNext(NodoStack next) {
         this.next = next;
     }
-    
-    
     
 }
