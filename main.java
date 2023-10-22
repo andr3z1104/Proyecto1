@@ -1,32 +1,33 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package grafoma;
 
 /**
  *
  * @author andre
  */
-public class main {
-    public static void main(String[] args){
-         
-        GrafoMA g = new GrafoMA(6,true);
-        
-        g.insertVertice(6);
-        
+public class Main {
 
-        g.insertArista(0, 1);
-        g.insertArista(2, 2);
-        g.insertArista(1, 5);
-        g.insertArista(5, 5);
-        
-        g.imprimirMatrix();
-
-        g.deleteVertice(3);
-        g.imprimirMatrix();
-
-        
-        
+    public static void main(String[] args) {
+       GRAFO g = new GRAFO(5);
+       
+       g.print();
+       
+       g.insertArista(0, 0);
+       g.insertArista(4, 4);
+       g.insertArista(2, 3);
+       
+       g.print();
+       
+       g.insertVertice(1);
+       
+       
+       g.print();
+       
+       g.deleteVertice(0);
+       
+       g.print();
     }
+    
 }
