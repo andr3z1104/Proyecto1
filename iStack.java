@@ -9,8 +9,8 @@
  */
 public interface iStack {
     
-    public void push(Object element);
-    public Nodo pop();
+    public void push(int element);
+    public NodoStack pop();
     public boolean isEmpty();
     
 }

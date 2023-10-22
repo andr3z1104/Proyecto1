@@ -7,21 +7,21 @@
  *
  * @author andre
  */
-public class Stack implements iStack{
+public class StackKosa implements iStack{
     
-    private Nodo peak;
+    private NodoStack peak;
     private int length;
 
-    public Stack() {
+    public StackKosa() {
         this.peak = null;
         this.length = 0;
     }
 
-    public Nodo getPeak() {
+    public NodoStack getPeak() {
         return peak;
     }
 
-    public void setPeak(Nodo peak) {
+    public void setPeak(NodoStack peak) {
         this.peak = peak;
     }
 
@@ -33,25 +33,14 @@ public class Stack implements iStack{
         this.length = length;
     }
 
-    @Override
-    public void push(Object element) {
-        Nodo nodo = new Nodo(element);
-        if (isEmpty()) {
-            setPeak(nodo);
-        } else {
-            nodo.setNext(getPeak());
-            setPeak(nodo);
-        }
-        length++;
-    }
 
     @Override
-    public Nodo pop() {
+    public NodoStack pop() {
         if (isEmpty()) {
             System.out.println("La lista se encuentra vacia");
             return null;
         } else {
-            Nodo pointer = getPeak();
+            NodoStack pointer = getPeak();
             setPeak(pointer.getNext());
             pointer.setNext(null);
             length--;
@@ -65,11 +54,23 @@ public class Stack implements iStack{
     }
     
     public void print(){
-        Nodo pointer = getPeak();
+        NodoStack pointer = getPeak();
         while (pointer != null) {
             System.out.println("[ " + pointer.getElement() + " ]");
             pointer = pointer.getNext();
         } 
+    }
+
+    @Override
+    public void push(int element) {
+        NodoStack nodo = new NodoStack(element);
+        if (isEmpty()) {
+            setPeak(nodo);
+        } else {
+            nodo.setNext(getPeak());
+            setPeak(nodo);
+        }
+        length++;
     }
     
     
