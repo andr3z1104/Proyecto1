@@ -1,8 +1,17 @@
+<<<<<<< HEAD
+package clases;
+
+=======
+>>>>>>> 76d984ca949025ec6ff6ac4e786f66b40b020e70
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+<<<<<<< HEAD
+
+=======
 package clases;
+>>>>>>> 76d984ca949025ec6ff6ac4e786f66b40b020e70
 
 
 /**
@@ -78,6 +87,36 @@ public class GRAFO {
         }else{
             
             int [] [] deleteMatriz = new int [getMatrixAdy().length-1] [getMatrixAdy().length-1];
+<<<<<<< HEAD
+//            
+//            for (int i = 0; i < getMatrixAdy().length-1; i++) {
+//                if(i != v)
+//                    for (int j = 0; j < getMatrixAdy().length-1; j++) {
+//                        if(j != v){
+//                            deleteMatriz[i][j] = matrixAdy[i][j];
+//                        }
+//                    }
+//            }
+
+            
+            for (int i = 0; i < getMatrixAdy().length; i++) {
+                for (int j = 0; j < getMatrixAdy().length; j++) {
+                    if(i<v && j<v){
+                        deleteMatriz[i][j] = getMatrixAdy()[i][j];
+                    }
+                    else if (i<v && j>v) {
+                        deleteMatriz[i][j-1] = getMatrixAdy()[i][j];
+                    }
+                    else if(i>v && j<v){
+                        deleteMatriz[i-1][j] = getMatrixAdy()[i][j];
+                        
+                    }else if(i>v && j>v){
+                        deleteMatriz[i-1][j-1] = getMatrixAdy()[i][j];
+                    }
+                        
+                }
+                
+=======
             
             for (int i = 0; i < getMatrixAdy().length-1; i++) {
                 if(i != v)
@@ -86,6 +125,7 @@ public class GRAFO {
                             deleteMatriz[i][j] = matrixAdy[i][j];
                         }
                     }
+>>>>>>> 76d984ca949025ec6ff6ac4e786f66b40b020e70
             }
             setMatrixAdy(deleteMatriz);
         }
