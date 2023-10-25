@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-package clases;
 
-=======
->>>>>>> 76d984ca949025ec6ff6ac4e786f66b40b020e70
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-<<<<<<< HEAD
-
-=======
 package clases;
->>>>>>> 76d984ca949025ec6ff6ac4e786f66b40b020e70
 
 
 /**
@@ -87,16 +75,6 @@ public class GRAFO {
         }else{
             
             int [] [] deleteMatriz = new int [getMatrixAdy().length-1] [getMatrixAdy().length-1];
-<<<<<<< HEAD
-//            
-//            for (int i = 0; i < getMatrixAdy().length-1; i++) {
-//                if(i != v)
-//                    for (int j = 0; j < getMatrixAdy().length-1; j++) {
-//                        if(j != v){
-//                            deleteMatriz[i][j] = matrixAdy[i][j];
-//                        }
-//                    }
-//            }
 
             
             for (int i = 0; i < getMatrixAdy().length; i++) {
@@ -115,17 +93,7 @@ public class GRAFO {
                     }
                         
                 }
-                
-=======
-            
-            for (int i = 0; i < getMatrixAdy().length-1; i++) {
-                if(i != v)
-                    for (int j = 0; j < getMatrixAdy().length-1; j++) {
-                        if(j != v){
-                            deleteMatriz[i][j] = matrixAdy[i][j];
-                        }
-                    }
->>>>>>> 76d984ca949025ec6ff6ac4e786f66b40b020e70
+
             }
             setMatrixAdy(deleteMatriz);
         }
@@ -135,65 +103,67 @@ public class GRAFO {
     
     
     public void kosaraju(){
-        Kosaraju k = new Kosaraju();
-        k.stronglyConnected(this);
+        int n = getMatrixAdy().length;
+        boolean[] visitados = new boolean[n];
+        StackKosa pila = new StackKosa();
+
+        for (int i = 0; i < n; i++) {
+            if (!visitados[i]) {
+                findOrder(i, visitados, pila);
+            }
+        }
+
+        GRAFO grafoTranspuesto = getTranspuesto();
+
+        visitados = new boolean[n];
+
+        while (!pila.isEmpty()) {
+              int v = pila.pop().getElement();
+
+            if (!visitados[v]) {
+                System.out.print("Componente fuertemente conexa: ");
+                grafoTranspuesto.dfs(v, visitados);
+                System.out.println();
+            }
+        }
+    }
+
+    private void findOrder(int v, boolean[] visitados, StackKosa pila) {
+        visitados[v] = true;
+
+        for (int i = 0; i < getMatrixAdy().length; i++) {
+            if (getMatrixAdy()[v][i] != 0 && !visitados[i]) {
+                findOrder(i, visitados, pila);
+            }
+        }
+
+        pila.push(v);
+    }
+
+    private void dfs(int v, boolean[] visitados) {
+        visitados[v] = true;
+        System.out.print(v + " ");
+
+        for (int i = 0; i < getMatrixAdy().length; i++) {
+            if (getMatrixAdy()[v][i] != 0 && !visitados[i]) {
+                dfs(i, visitados);
+            }
+        }
+    }
+
+    private GRAFO getTranspuesto() {
+        int n = getMatrixAdy().length;
+        GRAFO grafoTranspuesto = new GRAFO(n);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                grafoTranspuesto.getMatrixAdy()[i][j] = getMatrixAdy()[j][i];
+            }
+        }
+
+        return grafoTranspuesto;
     }
     
-    
-//    
-//    public void dfs(int v){
-//        visitado[v] = true;
-//        System.out.println(v +" ");
-//        for (int i = 0; i < getMatrixAdy().length; i++) {
-//            if (getMatrixAdy()[v][i] == 1 && !visitado[v]) {
-//                dfs(v);
-//            }
-//        }
-//    }
-//    
-//    public void stronglyCon(){
-//        visitado = new boolean[getMatrixAdy().length];
-//        StackKosa pila = new StackKosa();
-//        
-//        for(int v=0; v< getMatrixAdy().length; v++){
-//            if(!visitado[v]){
-//                findOrder(v,pila);
-//            }
-//        }
-//        
-//        invertir();
-//        
-//        visitado = new boolean[getMatrixAdy().length];
-//        while(!pila.isEmpty()){
-//            int vertex = pila.pop().getElement();
-//            if(!visitado[vertex]){
-//                dfs(vertex);
-//                System.out.println("");
-//            }
-//        }
-//    }
-//    
-//    public void findOrder(int v, StackKosa pila){
-//        visitado[v] = true;
-//        
-//        for (int i = 0; i < getMatrixAdy().length; i++) {
-//            if(getMatrixAdy()[v][i] == 1 && !visitado[v]){
-//                findOrder(v, pila);
-//            }
-//        }
-//        pila.push(v);
-//    }
-//    
-//    public void invertir(){
-//        for (int i = 0; i < getMatrixAdy().length; i++) {
-//            for (int j = 0; j < getMatrixAdy().length; j++) {
-//                if(getMatrixAdy()[i][j] == 1){
-//                    getMatrixAdy()[i][j] = 0;
-//                    getMatrixAdy()[i][j] = 1;
-//                }
-//            }
-//        }
-//    }
     
     
     public void print(){
@@ -206,4 +176,6 @@ public class GRAFO {
         }
     }
     
+
 }
+    
